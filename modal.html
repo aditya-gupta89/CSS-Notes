@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick=handleOpen()>Open the modal</button>
+    <dialog id="dialog">
+        <div id="wrapper">
+            <h1>Please fill this form </h1>
+            <form style="display:flex; flex-direction: column; gap: 1rem;">
+                <div>
+                <span>Please Enter a name</span>
+                <input type="text" />
+            </div>
+<div>
+                <span>Please Enter your age</span>
+                <input type="text" />
+            </div>
+            <div style="display:flex;justify-content: flex-end;">
+            <button onclick=handleClose()>Cancel</button>
+            <button type="submit"> Submit</button>
+        </div>
+            </form>
+        </div>
+    </dialog>
+    <script>
+     let dialog = document.querySelector('#dialog')
+     let wrapper = document.querySelector('#wrapper')
+     let handleClose = ()=>{
+        dialog.close();
+     }
+     let handleOpen = ()=>{
+        dialog.showModal();
+     }
+     dialog.addEventListener('click',(event)=>{
+        if(!wrapper.contains(event.target))
+        dialog.close()
+     })
+    </script>
+</body>
+
+</html>

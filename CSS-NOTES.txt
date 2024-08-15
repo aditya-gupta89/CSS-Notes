@@ -1,0 +1,14 @@
+CSS COMBINATORS
+
+Descendant combinator(space) :-  The Descendant combinator select all the elements that are descendant of a specific elements
+example :- div p
+
+Child Combinator :- The child combinator select all elements that are direct children of a specified element 
+example :- div >p
+
+Adjacent sibiling combinator :- The adjacent sibiling combinator selects an element  that is immediately preceded by a specified elements.
+example :- div h2 +p
+
+basically + symbol  check all the adjacent and give you the first but ~ give you all the adjacent elements
+General sibiling combinator :- The general sibiling combinator select all the elements that are sibilings
+example :- div h2 ~p

@@ -1,0 +1,232 @@
+
+:root{
+    --background: #ebecef;
+    --primary-color: #dedfe3;
+    --secondary-color: #a7aab4;
+    --accent-color: #50d6da;
+    --text-color: #050505;
+}
+
+
+.dark-mode{
+    
+    --background: #101114;
+    --primary-color: #1C1D20;
+    --secondary-color: #4A4D57;
+    --accent-color: #00FFC4;
+    --text-color: #F9F9F9;
+    transition: 3ms ease;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    /* background-color: black; */
+}
+
+body{
+background-color:var(--background);
+width: 100vw;
+ height: 100vh;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ flex-direction: column;
+}
+
+#todo-app{
+ width:60%;
+ height:90%;
+ border-radius: 8px;
+ background-color: var(--background);
+ padding:12px
+}
+
+@property --angle{
+    syntax: "<angle>";
+    initial-value:0deg;
+    inherits: false;
+}
+
+#todo-app::after , #todo-app::before{
+    content:'';
+    --angle:0deg;
+    position:absolute;
+    height:90%;
+    width:60%;
+    /* background-image:conic-gradient(#ff4545,#00ff99,#ff0095); */
+    background-image:conic-gradient(from var(--angle),#ff4545,#00ff99,#006aff,#ff0095,#ff4545);
+    top:50%;
+    left:50%;
+    translate:-50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    animation:3s spin linear infinite;
+
+}
+
+@keyframes spin {
+    from{
+        --angle:0deg
+    }
+  to{
+    --angle:360deg;
+  }    
+}
+#todo-app:before{
+    filter:blur(1.5rem);
+    opacity: .5;
+}
+h1{
+    color:var(--accent-color);
+    font-size: 4rem;
+    text-align: center;
+}
+
+form{
+    margin-top: 1rem;
+    position: relative;
+}
+
+#section{
+    width:100%;
+
+}
+form input{
+    border: 1px solid var(--secondary-color);
+    border-radius: 100px;
+    box-sizing: border-box;
+    color:var(--text-color);
+    width: 90%;
+    background-color: var(--background);
+    height:50px;
+    border-bottom-right-radius: 0;
+    padding:12px 20px;
+    border-top-right-radius: 0;
+}
+form input:focus{
+    outline:none
+}
+form button{
+height: 53px;
+width:15%;
+background-color: var(--accent-color);
+border-radius: 100px;
+border: 1px solid var(--secondary-color);
+position: absolute;
+right:-2px
+}
+
+
+ul{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap:4px;
+
+}
+
+ul li{
+    height: 50px;
+    background-color:var(--background);
+    border-radius: 16px;
+    padding: 8px 16px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+    align-items: center;
+}
+li input{
+    display: none;
+
+}
+.todo-text{
+    color:var(--text-color);
+    font-weight: 600;
+    flex: 1;
+    transition: 200ms ease;
+    padding: 8px;
+    height:max-content
+}
+
+.custom-checkbox{
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    width:20px;
+    height:20px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    transition:200ms ease;
+    cursor: pointer;
+}
+
+input[type='checkbox']:checked + .custom-checkbox{
+    background-color: var(--accent-color);
+}
+input[type='checkbox']:checked + .custom-checkbox svg{
+    fill: var(--primary-color);
+}
+input[type='checkbox']:checked ~ .todo-text{
+    text-decoration: line-through;
+    color:var(--secondary-color)
+}
+
+.delete-button{
+    padding: 3px;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.delete-button svg{
+    transition: 200ms ease;
+}
+.delete-button:hover svg{
+    fill: #ff0033;
+}
+
+#nav{
+    width: 100%;
+    margin:0 auto;
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+#toggle-switch{
+    position: absolute;
+    right: 0;
+    border:1px solid var(--secondary-color);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+top: 20px;
+}
+
+#toggle-switch  svg{
+    fill:var(--secondary-color)
+
+}
+
+#toggle-switch  svg:last-child{
+    display: none;
+}
+
+.dark-mode #toggle-switch  svg:first-child{
+    display: none;
+}
+
+.dark-mode #toggle-switch  svg:last-child{
+    display: block;
+}
+ 
